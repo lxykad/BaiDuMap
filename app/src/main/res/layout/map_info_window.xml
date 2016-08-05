@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#39c6c1"
+    android:background="@drawable/shape_radius_rect_main_color"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,13 +16,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="车牌号：" />
+            android:text="车牌号："
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="998888888999"
-            android:textSize="15sp" />
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
@@ -37,13 +40,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="行驶时间：" />
+            android:text="行驶时间："
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1220"
-            android:textSize="15sp" />
+            android:textColor="#6aef29"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
@@ -58,13 +64,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="报警类型：" />
+            android:text="报警类型："
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="6695"
-            android:textSize="15sp" />
+            android:textColor="#fa0000"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
@@ -79,13 +88,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="位置：" />
+            android:text="位置："
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="上海"
-            android:textSize="15sp" />
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
@@ -100,13 +112,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="最后心跳时间：" />
+            android:text="最后心跳时间："
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1：20"
-            android:textSize="15sp" />
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
@@ -121,23 +136,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="实时时间值：" />
+            android:text="实时时间值："
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
         <ProgressBar
-            android:layout_weight="1"
             style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="0dp"
-            android:layout_height="10dp"
+            android:layout_height="8dp"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:max="100"
+            android:minWidth="100dp"
             android:progress="36"
             android:progressDrawable="@drawable/progressbar_time" />
 
         <TextView
-            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="36%" />
+            android:layout_marginLeft="10dp"
+            android:text="36%"
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
@@ -152,22 +172,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="今日技能值：" />
+            android:text="今日技能值："
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
         <ProgressBar
-            android:layout_weight="1"
             style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="0dp"
-            android:layout_height="10dp"
+            android:layout_height="8dp"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:max="100"
             android:progress="78"
-            android:progressDrawable="@drawable/progressbar_time" />
+            android:progressDrawable="@drawable/progressbar_skill" />
+
         <TextView
-            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="78%" />
+            android:layout_marginLeft="10dp"
+            android:text="78%"
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
@@ -176,18 +201,18 @@
         android:layout_width="match_parent"
         android:layout_height="2px"
         android:layout_marginTop="5dp"
-        android:background="#f00" />
+        android:background="#209aef" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="35dp">
 
         <View
             android:id="@+id/divider"
             android:layout_width="2px"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:background="#000" />
+            android:background="#209aef" />
 
         <TextView
             android:id="@+id/more_detail"
@@ -196,7 +221,8 @@
             android:layout_toLeftOf="@+id/divider"
             android:gravity="center"
             android:text="查看详情"
-            android:textColor="#000" />
+            android:textColor="#209aef"
+            android:textSize="15sp" />
 
 
         <TextView
@@ -206,7 +232,8 @@
             android:layout_toRightOf="@+id/divider"
             android:gravity="center"
             android:text="我知道了"
-            android:textColor="#000" />
+            android:textColor="#209aef"
+            android:textSize="15sp" />
 
 
     </RelativeLayout>
