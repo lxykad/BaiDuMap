@@ -19,18 +19,32 @@ import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.model.LatLng;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements BaiduMap.OnMarkerClickListener, InfoWindow.OnInfoWindowClickListener {
 
     MapView mMapView = null;
     private Marker mMarker;
+    private Marker mMarker2;
+    private Marker mMarker3;
+    private Marker mMarker4;
+
     private BaiduMap mMap;
     private LatLng mLatLng;
+    private LatLng mLatLng2;
+    private LatLng mLatLng3;
+    private LatLng mLatLng4;
+
     private BitmapDescriptor mBitmap;
     private MarkerOptions mOptions;
+    private MarkerOptions mOptions2;
+    private MarkerOptions mOptions3;
+    private MarkerOptions mOptions4;
 
     private View mPop;
     private TextView mTvDetail;
     private TextView mTvCancel;
+    private ArrayList<MarkerOptions> mOptionList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +53,35 @@ public class MainActivity extends AppCompatActivity implements BaiduMap.OnMarker
 
         mMapView = (MapView) findViewById(R.id.bmapView);
         mMap = mMapView.getMap();
-        mLatLng = new LatLng(19.963175, 76.400244);
+        mLatLng = new LatLng(20.963175, 76.400244);
+        mLatLng2 = new LatLng(21.963175, 77.400244);
+        mLatLng3 = new LatLng(25.963175, 75.400244);
+        mLatLng4 = new LatLng(24.963175, 74.400244);
         mBitmap = BitmapDescriptorFactory
                 .fromResource(R.mipmap.lgz);
         mOptions = new MarkerOptions().position(mLatLng).icon(mBitmap);
+        mOptions2 = new MarkerOptions().position(mLatLng2).icon(mBitmap);
+        mOptions3 = new MarkerOptions().position(mLatLng3).icon(mBitmap);
+        mOptions4 = new MarkerOptions().position(mLatLng4).icon(mBitmap);
+
         mMarker = (Marker) mMap.addOverlay(mOptions);
+        mMarker2 = (Marker) mMap.addOverlay(mOptions);
+        mMarker3 = (Marker) mMap.addOverlay(mOptions);
+        mMarker4 = (Marker) mMap.addOverlay(mOptions);
+
         //mMap.addOverlay(options);
         mPop = LayoutInflater.from(this).inflate(R.layout.map_info_window, null);
         mTvDetail = (TextView) mPop.findViewById(R.id.more_detail);
         mTvCancel = (TextView) mPop.findViewById(R.id.i_know);
         mMap.setOnMarkerClickListener(this);
+
+        //
+        mOptionList.add(mOptions);
+        mOptionList.add(mOptions2);
+        mOptionList.add(mOptions3);
+        mOptionList.add(mOptions4);
+
+
 
     }
 
@@ -87,6 +120,8 @@ public class MainActivity extends AppCompatActivity implements BaiduMap.OnMarker
 //        //在地图上添加Marker，并显示
 //        mMapView.getMap().addOverlay(option);
 
+        //
+        mMap.clear();
         //定位到指定位置并添加marker
         MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(mLatLng);
         mMap.setMapStatus(u);
@@ -104,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements BaiduMap.OnMarker
     public boolean onMarkerClick(Marker marker) {//marker的点击事件
         //show();
         //弹出自定义弹窗
-        showPopWindow();
+        showPopWindow(marker);
         return false;
     }
 
@@ -115,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements BaiduMap.OnMarker
     }
 
     //弹窗popupWindow
-    public void showPopWindow() {
+    public void showPopWindow(Marker marker) {
         //LatLng llInfo = mMap.getProjection().fromScreenLocation(p);
 //        new InfoWindow(mPop,mLatLng, -47, new InfoWindow.OnInfoWindowClickListener() {
 //            @Override
@@ -129,11 +164,12 @@ public class MainActivity extends AppCompatActivity implements BaiduMap.OnMarker
 //
 //            }
 //        });
-        InfoWindow infoWindow = new InfoWindow(mPop,mLatLng,-47);
+        LatLng latLng = marker.getPosition();
+        InfoWindow infoWindow = new InfoWindow(mPop, latLng, -47);
         mTvDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,DetailActivity.class);
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                 startActivity(intent);
             }
         });
@@ -145,6 +181,28 @@ public class MainActivity extends AppCompatActivity implements BaiduMap.OnMarker
         });
 
         mMap.showInfoWindow(infoWindow);
+
+    }
+
+    //初始化marker
+    public void initMark(View view) {
+        mMap.clear();
+        Toast.makeText(MainActivity.this,"init4",Toast.LENGTH_SHORT).show();
+        //定位到指定位置并添加marker
+//        MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(mLatLng);
+//        mMap.setMapStatus(u);
+//        mMap.addOverlay(mOptions);
+        for (int i = 0; i < 4; i++) {
+            mMap.addOverlay(mOptionList.get(i));
+        }
+        MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(mLatLng3);
+        mMap.setMapStatus(u);
+
+    }
+
+    //轨迹回放
+    public void showGuiJi(View view) {
+
 
     }
 }
