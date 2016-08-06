@@ -27,25 +27,24 @@
             android:layout_centerVertical="true"
             android:onClick="delMark"
             android:text="删除标记" />
+
         <Button
-            android:layout_toRightOf="@+id/del"
             android:id="@+id/marker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/del"
             android:onClick="initMark"
             android:text="initMark" />
+
         <Button
-            android:layout_toRightOf="@+id/marker"
             android:id="@+id/guiji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/marker"
             android:onClick="showGuiJi"
             android:text="轨迹回放" />
-
-
-
 
 
     </RelativeLayout>
